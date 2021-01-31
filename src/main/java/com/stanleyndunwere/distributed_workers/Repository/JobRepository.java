@@ -11,4 +11,7 @@ public interface JobRepository extends CrudRepository<Job, Long> {
 
   List<Job> findAllByStatus(String status);
 
+  List<Job> findAll();
+
+
 }

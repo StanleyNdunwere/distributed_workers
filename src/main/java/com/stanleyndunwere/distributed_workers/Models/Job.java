@@ -1,5 +1,6 @@
 package com.stanleyndunwere.distributed_workers.Models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,12 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @Data
-@Component
+@AllArgsConstructor
 public class Job {
 
   @Id
@@ -24,4 +26,16 @@ public class Job {
   private String url;
   private String status;
   private String httpCode;
+
+  public Job(){
+
+  }
+
+  public Job(String url, String status, String httpCode) {
+    this.url = url;
+    this.status = status;
+    this.httpCode = httpCode;
+
+  }
+
 }

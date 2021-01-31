@@ -3,9 +3,11 @@ package com.stanleyndunwere.distributed_workers.Service;
 import com.stanleyndunwere.distributed_workers.Models.Job;
 import com.stanleyndunwere.distributed_workers.Repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class JobServiceImpl implements JobService{
 
   private JobRepository jobRepo;
@@ -17,6 +19,11 @@ public class JobServiceImpl implements JobService{
 
   @Override
   public List<Job> findAllJobs() {
-    return null;
+    return jobRepo.findAll();
+  }
+
+  @Override
+  public Job save(Job job) {
+    return jobRepo.save(job);
   }
 }

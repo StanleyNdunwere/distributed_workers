@@ -7,4 +7,6 @@ import java.util.List;
 public interface JobService {
 
   List<Job> findAllJobs();
+
+  Job save(Job job);
 }

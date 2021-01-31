@@ -7,25 +7,126 @@
   </head>
   <body>
     <h2 id="header">Job Service Application</h2>
-    <table id="table">
-      <thead id="thead">
-        <tr>
-          <th>Id</th>
-          <th>Title</th>
-          <th>Url</th>
-          <th>Status</th>
-          <th>Response Code</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Proxify</td>
-          <td>http://proxify.com</td>
-          <td>PENDING</td>
-          <td>200</td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="stat-holder">
+      <p>Completed By Process 1: <span>20</span></p>
+      <p>Completed By Process 2: <span>20</span></p>
+      <p>Completed By Process 3: <span>20</span></p>
+    </div>
+    <div id="table-container">
+      <table id="table">
+        <thead id="thead">
+          <tr>
+            <th>Id</th>
+            <th>Url</th>
+            <th>Status</th>
+            <th>Response Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="job : ${jobsList}">
+            <td th:text="${job.id}"></td>
+            <td th:text="${job.url}"></td>
+            <td th:text="${job.status}"></td>
+            <td th:text="${message.httpCode}"></td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>http://proxify.com</td>
+            <td>PENDING</td>
+            <td>200</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="btn-container">
+      <div class="button">Process: Worker1</div>
+      <div class="button">Process: Worker2</div>
+      <div class="button">Process: Worker3</div>
+    </div>
   </body>
 </html>
