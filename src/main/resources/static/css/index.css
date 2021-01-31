@@ -70,6 +70,10 @@ html {
     cursor: pointer;
 }
 
+#btn-container .end {
+    background: firebrick;
+}
+
 #btn-container .button:hover {
     background: #889909;
     cursor: pointer;
@@ -78,9 +82,9 @@ html {
 #stat-holder {
     font-size: 20px;
     font-weight: bold;
-    width:60%;
-    margin:30px auto;
-    min-width:600px;
+    width: 60%;
+    margin: 30px auto;
+    min-width: 600px;
     font-color: brown;
     display: flex;
     flex-direction: row;
@@ -90,5 +94,6 @@ html {
 }
 
 #stat-holder span {
-    font-color: green;
+    color: firebrick;
+    font-weight: bolder;
 }

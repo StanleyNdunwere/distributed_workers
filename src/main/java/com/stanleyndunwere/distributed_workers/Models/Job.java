@@ -26,6 +26,7 @@ public class Job {
   private String url;
   private String status;
   private String httpCode;
+  private String completedBy;
 
   public Job(){
 

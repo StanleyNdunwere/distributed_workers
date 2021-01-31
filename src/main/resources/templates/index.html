@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>Distributed Workers</title>
     <link rel="stylesheet" th:href="@{css/index.css}">
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
   </head>
   <body>
     <h2 id="header">Job Service Application</h2>
     <div id="stat-holder">
-      <p>Completed By Process 1: <span>20</span></p>
-      <p>Completed By Process 2: <span>20</span></p>
-      <p>Completed By Process 3: <span>20</span></p>
+      <p>Completed By Process1: <span id="proc1">0</span></p>
+      <p>Completed By Process2: <span id="proc2">0</span></p>
+      <p>Completed By Process3: <span id="proc3">0</span></p>
     </div>
     <div id="table-container">
       <table id="table">
@@ -22,111 +24,32 @@
             <th>Response Code</th>
           </tr>
         </thead>
-        <tbody>
-          <tr th:each="job : ${jobsList}">
-            <td th:text="${job.id}"></td>
-            <td th:text="${job.url}"></td>
-            <td th:text="${job.status}"></td>
-            <td th:text="${message.httpCode}"></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>http://proxify.com</td>
-            <td>PENDING</td>
-            <td>200</td>
+        <tbody id="tbody">
+          <tr th:id="${job.id}" th:each="job : ${jobsList}">
+            <td th:id="${job.id + 'id'}" th:text="${job.id}"></td>
+            <td th:id="${job.id + 'url'}" th:text="${job.url}"></td>
+            <td th:switch="${#strings.toLowerCase(job.status)}">
+              <p th:id="${job.id + 'status'}" th:case="new" th:style="'color:blue;font-weight:bold;'"
+                 th:text="${job.status}"></p>
+              <p th:id="${job.id + 'status'}" th:case="processing" th:style="'color:orange;font-weight:bold;'"
+                 th:text="${job.status}"></p>
+              <p th:id="${job.id + 'status'}" th:case="done" th:style="'color:green;font-weight:bold;'"
+                 th:text="${job.status}"></p>
+              <p th:id="${job.id + 'status'}" th:case="error" th:style="'color:red;font-weight:bold;'"
+                 th:text="${job.status}"></p>
+            </td>
+            <td th:id="${job.id + 'httpCode'}" th:text="${job.httpCode}"></td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div id="btn-container">
-      <div class="button">Process: Worker1</div>
-      <div class="button">Process: Worker2</div>
-      <div class="button">Process: Worker3</div>
+      <div class="button" id="process1" onclick="processJob('process1')">Process: Worker1</div>
+      <div class="button" id="process2" onclick="processJob('process2')">Process: Worker2</div>
+      <div class="button" id="process3" onclick="processJob('process3')">Process: Worker3</div>
     </div>
   </body>
+  <script type=text/javascript src="js/app.js">
+  </script>
 </html>
