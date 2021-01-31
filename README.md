@@ -13,8 +13,8 @@ This should bring up a page that with pre-seeded jobs listed on a table.
 
 ![Distributed workers homepage](https://i.ibb.co/fSxFgbX/distributed-workers.jpg)
 Below this table there are three buttons to simulate parallel execution of the distributed workers.
-Clicking on them will fire requests to the springboot applications to start processing the jobs.
-Due to the speed of completion I added an artificial delay of 2 seconds to allow better appreciation of the parallel execution of the jobs.
+Clicking on them will fire requests to the springboot application to initiate processing of the jobs.
+Due to the speed of completion I added an artificial delay of 2 seconds to allow for better appreciation of the parallel execution of the jobs.
 
 ## Processing
 You should see real-time updates on the screen as each jobs complete.
