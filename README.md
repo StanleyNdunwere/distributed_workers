@@ -3,6 +3,9 @@ A Demo application simulating distributed workers
 
 ## Setting Up The Application
 To access this application; clone the repository and pull the required libraries using an IDE (Preferably Intellij IDEA).
+The application uses a MySql database instance to store the jobs. For the purpose of development I configured the application to read from the database on my local machine.
+You will need to configure the application to connect to your own MySql instance.
+The configuration is present in the application.properties files located in the root of the resources folder. If properly configured Springboot will start indexing the application without errors.
 Once the IDE completes indexing the application you can run it via the run button at the top right corner of your screen (Intellij IDEA) or using Ctrl + f5.
 
 ## Navigating the Application
